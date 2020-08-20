@@ -6,7 +6,7 @@
 <p align="center">NexT 是一个高质量并且优雅的<a href="http://hexo.io">Hexo</a> 主题。这是精心制作做出来的 hexo 主题。</p>
 
 
-## 此为修改版，修复了一些 bugs，有很多细节的加入
+## 此为修改版 by [dna049](https://dna049.com)，修复了一些 bugs，有很多细节的加入
 
 [![Join the chat at https://gitter.im/iissnan/hexo-theme-next](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/iissnan/hexo-theme-next?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![mnt-image]][commits-url]
