@@ -5,6 +5,8 @@
 
 <p align="center">NexT is a high quality elegant <a href="http://hexo.io">Hexo</a> theme. It is crafted from scratch, with love.</p>
 
+## This is a modify version, fixed some bugs, and add more functions
+
 [![gitter-image]][gitter-url]
 [![mnt-image]](https://github.com/theme-next/hexo-theme-next)
 [![travis-image]][travis-url]

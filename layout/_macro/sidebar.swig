@@ -44,12 +44,38 @@
             #}</p>
           </div>
 
+          {% if theme.social %}
+            <div class="links-of-author motion-element">
+                {% for name, link in theme.social %}
+                  <span class="links-of-author-item">
+                    <a href="{{ link.split('||')[0] | trim }}" target="_blank" title="{{ name }}">
+                      {% if theme.social_icons.enable %}
+                        <i class="fa fa-fw fa-{{ link.split('||')[1] | trim | default('globe') }}"></i>{#
+                    #}{% endif %}{#
+                      #}{% if not theme.social_icons.icons_only %}{#
+                        #}{{ name }}{#
+                      #}{% endif %}{#
+                  #}</a>
+                  </span>
+                {% endfor %}
+            </div>
+          {% endif %}
+          
+          {% if theme.rss %}
+            <div class="feed-link motion-element">
+              <a href="{{ url_for(theme.rss) }}" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          {% endif %}
+          
           <nav class="site-state motion-element">
 
             {% if config.archive_dir != '/' and site.posts.length > 0 %}
               <div class="site-state-item site-state-posts">
               {% if theme.menu.archives %}
-                <a href="{{ url_for(theme.menu.archives).split('||')[0] | trim }}">
+                <a href="{{ url_for(theme.menu.archives.split('||')[0]) | trim }}">
               {% else %}
                 <a href="{{ url_for(config.archive_dir) }}">
               {% endif %}
@@ -81,33 +107,21 @@
               </div>
             {% endif %}
 
+            {% if site.tags.length > 1 %}
+            <script type="text/javascript" charset="utf-8" src="{{ url_for('/js/tagcloud.js') }}"></script>
+            <script type="text/javascript" charset="utf-8" src="{{ url_for('/js/tagcanvas.js') }}"></script>
+            <div class="widget-wrap">
+                <div id="myCanvasContainer" class="widget tagcloud">
+                    <canvas width="250" height="250" id="resCanvas" style="width:100%">
+                        {{ list_tags() }}
+                    </canvas>
+                </div>
+            </div>
+            {% endif %}
+
           </nav>
 
-          {% if theme.rss %}
-            <div class="feed-link motion-element">
-              <a href="{{ url_for(theme.rss) }}" rel="alternate">
-                <i class="fa fa-rss"></i>
-                RSS
-              </a>
-            </div>
-          {% endif %}
 
-          {% if theme.social %}
-            <div class="links-of-author motion-element">
-                {% for name, link in theme.social %}
-                  <span class="links-of-author-item">
-                    <a href="{{ link.split('||')[0] | trim }}" target="_blank" title="{{ name }}">
-                      {% if theme.social_icons.enable %}
-                        <i class="fa fa-fw fa-{{ link.split('||')[1] | trim | default('globe') }}"></i>{#
-                    #}{% endif %}{#
-                      #}{% if not theme.social_icons.icons_only %}{#
-                        #}{{ name }}{#
-                      #}{% endif %}{#
-                  #}</a>
-                  </span>
-                {% endfor %}
-            </div>
-          {% endif %}
 
           {% set cc = {'by': 1, 'by-nc': 1, 'by-nc-nd': 1, 'by-nc-sa': 1, 'by-nd': 1, 'by-sa': 1, 'zero': 1} %}
           {% if theme.creative_commons in cc %}

@@ -8,6 +8,8 @@
     #}{{ __('title.category') + page_title_suffix }}{#
   #}{% elif page.type === "tags" and not page.title %}{#
     #}{{ __('title.tag') + page_title_suffix }}{#
+  #}{% elif page.type === 'links' and not page.title %}{#
+    #}{{ __('title.links') + page_title_suffix }}{#
   #}{% else %}{#
     #}{{ page.title + page_title_suffix }}{#
   #}{% endif %}{#
@@ -37,6 +39,7 @@
               {{ tagcloud({min_font: 12, max_font: 30, amount: 300, color: true, start_color: '#ccc', end_color: '#111'}) }}
             </div>
           </div>
+          {% include 'tagColor.swig' %}
         {% elif page.type === 'categories' %}
           <div class="category-all-page">
             <div class="category-all-title">
@@ -46,6 +49,8 @@
               {{ list_categories() }}
             </div>
           </div>
+        {% elif page.type === 'links' %}
+          {% include 'links.swig' %}
         {% else %}
           {{ page.content }}
         {% endif %}
